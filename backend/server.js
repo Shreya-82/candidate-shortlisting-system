@@ -13,7 +13,17 @@ connectDB();
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://candidate-shortlisting-system-self.vercel.app",
+      "https://candidate-shortlisting-system-git-main-shreya-82s-projects.vercel.app"
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
+  })
+);
 app.use(express.json());
 
 app.get("/", (req, res) => {
